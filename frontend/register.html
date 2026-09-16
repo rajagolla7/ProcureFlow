@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account - Procurement Management System</title>
+
+    <link rel="stylesheet" href="css/register.css">
+
+</head>
+
+<body>
+
+    <div class="register-wrapper">
+
+        <!-- LEFT INFORMATION PANEL -->
+
+        <section class="register-info">
+
+            <div class="brand">
+                PROCUREMENT MANAGEMENT SYSTEM
+            </div>
+
+            <h1>
+                Build smarter procurement.
+            </h1>
+
+            <p>
+                Create your account and manage procurement
+                requests, suppliers, products and orders
+                from one secure platform.
+            </p>
+
+            <ul class="features">
+
+                <li>Secure account management</li>
+
+                <li>Easy procurement tracking</li>
+
+                <li>Supplier and order management</li>
+
+                <li>Centralized procurement workflow</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- REGISTRATION FORM -->
+
+        <section class="register-form-area">
+
+            <div class="form-header">
+
+                <h2>Create Account</h2>
+
+                <p>
+                    Register your account to get started.
+                </p>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div id="message" class="message"></div>
+
+
+            <form id="registerForm">
+
+
+                <!-- NAME -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="firstName">
+                            First Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="Enter first name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="lastName">
+                            Last Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Enter last name"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter phone number"
+                        required>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create password"
+                                minlength="6"
+                                required>
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                onclick="togglePassword('password', this)">
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Confirm password"
+                                minlength="6"
+                                required>
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                onclick="togglePassword('confirmPassword', this)">
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REGISTER BUTTON -->
+
+                <button
+                    type="submit"
+                    id="registerButton"
+                    class="register-button">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+
+            <!-- LOGIN LINK -->
+
+            <div class="login-link">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | ProcureFlow</title>
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+<div class="dashboard-container">
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">P</div>
+            <div class="brand-text">
+                <strong>ProcureFlow</strong>
+                <span>Procurement System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section-title">MAIN MENU</div>
+
+            <button class="nav-item active" type="button" data-section="dashboard">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </button>
+
+            <button class="nav-item" type="button" data-section="requests">
+                <span class="nav-icon">☷</span>
+                <span>Requests</span>
+            </button>
+
+            <button class="nav-item" type="button" data-section="products">
+                <span class="nav-icon">▣</span>
+                <span>Products</span>
+            </button>
+
+            <button class="nav-item" type="button" data-section="payments">
+                <span class="nav-icon">₹</span>
+                <span>Payments</span>
+            </button>
+
+            <button class="nav-item" type="button" data-section="tracking">
+                <span class="nav-icon">⇢</span>
+                <span>Tracking</span>
+            </button>
+
+            <button class="nav-item" type="button" data-section="ratings">
+                <span class="nav-icon">★</span>
+                <span>Ratings</span>
+            </button>
+
+			
+            <div class="nav-section-title second">ACCOUNT</div>
+			<button class="nav-item" type="button" data-section="report">
+			    <span class="nav-icon">⇩</span>
+			    <span>Download Report</span>
+			</button>
+
+            <button class="nav-item" type="button" data-section="profile">
+                <span class="nav-icon">◎</span>
+                <span>Profile</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="logoutButton" class="logout-nav" type="button">
+                <span class="nav-icon">↪</span>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <div class="main-area">
+        <header class="topbar">
+            <button id="menuButton" class="menu-button" type="button">☰</button>
+            <div class="topbar-title" id="pageTitle">Dashboard</div>
+            <div class="topbar-user">
+                <div class="user-avatar" id="userAvatar">A</div>
+                <div>
+                    <strong id="userName">Admin</strong>
+                    <span>ADMIN</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div id="message" class="message" role="alert"></div>
+
+            <!-- DASHBOARD -->
+            <section id="dashboardSection" class="content-section active">
+                <div class="section-heading">
+                    <span>ADMINISTRATION</span>
+                    <h1>Admin Dashboard</h1>
+                    <p>Monitor and manage procurement operations.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">TOTAL REQUESTS</div>
+                        <div class="stat-number" id="totalRequests">0</div>
+                        <div class="stat-description">All procurement requests</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">PENDING</div>
+                        <div class="stat-number" id="pendingRequests">0</div>
+                        <div class="stat-description">Waiting for review</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">APPROVED</div>
+                        <div class="stat-number" id="approvedRequests">0</div>
+                        <div class="stat-description">Approved requests</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">PAID ORDERS</div>
+                        <div class="stat-number" id="paidOrders">0</div>
+                        <div class="stat-description">Payments completed</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h2>Pending Requests</h2>
+                                <p>Requests that need admin action.</p>
+                            </div>
+                            <button class="text-button" type="button" data-section="requests">View all</button>
+                        </div>
+                        <div id="recentPendingRequests" class="mini-list">
+                            <div class="empty-state">Loading requests...</div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h2>Quick Actions</h2>
+                                <p>Common administration tasks.</p>
+                            </div>
+                        </div>
+                        <div class="quick-actions">
+                            <button type="button" class="quick-action" data-section="requests">
+                                <span>☷</span>
+                                <strong>Review Requests</strong>
+                                <small>Approve or reject requests</small>
+                            </button>
+                            <button type="button" class="quick-action" data-section="products">
+                                <span>▣</span>
+                                <strong>View Products</strong>
+                                <small>Check the product catalog</small>
+                            </button>
+                            <button type="button" class="quick-action" data-section="payments">
+                                <span>₹</span>
+                                <strong>Payments</strong>
+                                <small>Process approved payments</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REQUESTS -->
+            <section id="requestsSection" class="content-section">
+                <div class="section-heading">
+                    <span>PROCUREMENT</span>
+                    <h1>All Requests</h1>
+                    <p>Review, approve, reject and pay procurement requests.</p>
+                </div>
+
+                <div class="panel table-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Procurement Requests</h2>
+                            <p>All requests submitted by users.</p>
+                        </div>
+                        <button id="refreshRequestsButton" class="secondary-button" type="button">Refresh</button>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>REQUEST</th>
+                                <th>USER</th>
+                                <th>PRODUCT</th>
+                                <th>QTY</th>
+                                <th>TOTAL</th>
+                                <th>STATUS</th>
+                                <th>PAYMENT</th>
+                                <th>ACTION</th>
+                            </tr>
+                            </thead>
+                            <tbody id="requestsTableBody">
+                            <tr><td colspan="8" class="empty-row">Loading requests...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PRODUCTS -->
+            <section id="productsSection" class="content-section">
+                <div class="section-heading">
+                    <span>CATALOG</span>
+                    <h1>Products</h1>
+                    <p>View products currently available in the procurement catalog.</p>
+                </div>
+
+                <div class="panel table-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Product Catalog</h2>
+                            <p>Product prices and availability.</p>
+                        </div>
+                        <button id="refreshProductsButton" class="secondary-button" type="button">Refresh</button>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>PRODUCT</th>
+                                <th>PRICE</th>
+                                <th>QUANTITY</th>
+                                <th>DEPARTMENT</th>
+                                <th>CATEGORY</th>
+                                <th>STATUS</th>
+                            </tr>
+                            </thead>
+                            <tbody id="productsTableBody">
+                            <tr><td colspan="7" class="empty-row">Loading products...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PAYMENTS -->
+            <section id="paymentsSection" class="content-section">
+                <div class="section-heading">
+                    <span>FINANCE</span>
+                    <h1>Payments</h1>
+                    <p>Process payment for approved requests.</p>
+                </div>
+
+                <div class="panel table-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Payment Queue</h2>
+                            <p>Only approved and unpaid requests can be paid.</p>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>REQUEST</th>
+                                <th>PRODUCT</th>
+                                <th>USER</th>
+                                <th>AMOUNT</th>
+                                <th>STATUS</th>
+                                <th>ACTION</th>
+                            </tr>
+                            </thead>
+                            <tbody id="paymentsTableBody">
+                            <tr><td colspan="6" class="empty-row">Loading payments...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROFILE -->
+                <!-- TRACKING -->
+            <section id="trackingSection" class="content-section">
+                <div class="section-heading">
+                    <span>ORDER TRACKING</span>
+                    <h1>Tracking</h1>
+                    <p>Monitor shipping updates for all user procurement orders.</p>
+                </div>
+
+                <div class="panel table-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2>All Order Tracking</h2>
+                            <p>Shipping status and latest location reported by suppliers.</p>
+                        </div>
+                        <button id="refreshTrackingButton" class="secondary-button" type="button">
+                            Refresh
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="tracking-table">
+                            <thead>
+                            <tr>
+                                <th>REQUEST</th>
+                                <th>USER</th>
+                                <th>PRODUCT</th>
+                                <th>QTY</th>
+                                <th>STATUS</th>
+                                <th>CURRENT LOCATION</th>
+                                <th>TRACKING NUMBER</th>
+                                <th>SUPPLIER</th>
+                                <th>LAST UPDATED</th>
+                            </tr>
+                            </thead>
+                            <tbody id="trackingTableBody">
+                            <tr>
+                                <td colspan="9" class="empty-row">Loading tracking...</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        <section id="ratingsSection" class="content-section">
+            <div class="section-heading">
+                <span>PRODUCT RATINGS</span>
+                <h1>Customer Ratings</h1>
+                <p>View ratings and reviews submitted by users for all products.</p>
+            </div>
+            <div class="panel table-panel">
+                <div class="panel-header">
+                    <div><h2>Ratings &amp; Reviews</h2><p>All product ratings submitted by users.</p></div>
+                    <button id="refreshRatingsButton" class="secondary-button" type="button">Refresh</button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead><tr><th>PRODUCT</th><th>USER</th><th>RATING</th><th>REVIEW</th><th>DATE</th></tr></thead>
+                        <tbody id="ratingsTableBody"><tr><td colspan="5" class="empty-row">Loading ratings...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="profileSection" class="content-section">
+                <div class="section-heading">
+                    <span>ACCOUNT</span>
+                    <h1>Admin Profile</h1>
+                    <p>View the currently signed-in administrator.</p>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-avatar" id="profileAvatar">A</div>
+                    <div class="profile-details">
+                        <h2 id="profileName">Admin</h2>
+                        <span class="role-badge">ADMIN</span>
+                        <div class="profile-grid">
+                            <div><label>FULL NAME</label><strong id="profileFullName">-</strong></div>
+                            <div><label>EMAIL</label><strong id="profileEmail">-</strong></div>
+                            <div><label>PHONE NUMBER</label><strong id="profilePhone">-</strong></div>
+                            <div><label>DESIGNATION</label><strong id="profileDesignation">-</strong></div>
+                            <div><label>ROLE</label><strong>ADMIN</strong></div>
+                            <div><label>DEPARTMENT</label><strong id="profileDepartment">-</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+			<!-- REPORT -->
+            <section id="reportSection" class="content-section">
+
+                <div class="section-heading">
+                    <span>ADMINISTRATION</span>
+                    <h1>Procurement Report</h1>
+                    <p>View the procurement summary and download the complete report.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">TOTAL REQUESTS</div>
+                        <div class="stat-number" id="reportTotal">0</div>
+                        <div class="stat-description">All procurement requests</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-label">APPROVED</div>
+                        <div class="stat-number" id="reportApproved">0</div>
+                        <div class="stat-description">Requests approved by admin</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-label">REJECTED</div>
+                        <div class="stat-number" id="reportRejected">0</div>
+                        <div class="stat-description">Requests rejected by admin</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-label">PAID</div>
+                        <div class="stat-number" id="reportPaid">0</div>
+                        <div class="stat-description">Payments completed</div>
+                    </div>
+                </div>
+
+                <div class="panel" style="margin-top: 30px;">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Download Report</h2>
+                            <p>Download a CSV file containing all procurement requests and their current status.</p>
+                        </div>
+                        <button id="downloadReportButton" class="primary-button" type="button">
+                            ⇩ Download CSV Report
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+</main>
+    </div>
+</div>
+
+<script src="js/admin-dashboard.js"></script>
+</body>
+</html>

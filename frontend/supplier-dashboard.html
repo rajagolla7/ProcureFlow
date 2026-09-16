@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Dashboard | ProcureFlow</title>
+    <link rel="stylesheet" href="css/supplier-dashboard.css">
+</head>
+<body>
+<div class="dashboard-container">
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">P</div>
+            <div class="brand-text">
+                <strong>ProcureFlow</strong>
+                <span>Procurement System</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section-title">SUPPLIER MENU</div>
+            <button class="nav-item active" type="button" data-section="dashboard">
+                <span class="nav-icon">⌂</span><span>Dashboard</span>
+            </button>
+            <button class="nav-item" type="button" data-section="orders">
+                <span class="nav-icon">☷</span><span>Orders</span>
+            </button>
+            <button class="nav-item" type="button" data-section="shipping">
+                <span class="nav-icon">🚚</span><span>Shipping</span>
+            </button>
+            <button class="nav-item" type="button" data-section="inventory">
+                <span class="nav-icon">▣</span><span>Inventory</span>
+            </button>
+            <button class="nav-item" type="button" data-section="ratings">
+                <span class="nav-icon">★</span><span>Ratings</span>
+            </button>
+
+            <div class="nav-section-title second">ACCOUNT</div>
+            <button class="nav-item" type="button" data-section="profile">
+                <span class="nav-icon">◎</span><span>Profile</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="logoutButton" class="logout-nav" type="button">
+                <span class="nav-icon">↪</span><span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <div class="main-area">
+        <header class="topbar">
+            <button id="menuButton" class="menu-button" type="button">☰</button>
+            <div class="topbar-title" id="pageTitle">Dashboard</div>
+            <div class="topbar-user">
+                <div class="user-avatar" id="userAvatar">S</div>
+                <div>
+                    <strong id="userName">Supplier</strong>
+                    <span>SUPPLIER</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div id="message" class="message" role="alert"></div>
+
+            <section id="dashboardSection" class="content-section active">
+                <div class="section-heading">
+                    <span>SUPPLIER PORTAL</span>
+                    <h1>Supplier Dashboard</h1>
+                    <p>Manage paid procurement orders and update delivery progress.</p>
+                </div>
+
+                <div class="supplier-banner">
+                    <div>
+                        <small>WELCOME</small>
+                        <h2 id="welcomeName">Supplier</h2>
+                        <p>Assigned product: <strong id="assignedProduct">Loading...</strong></p>
+                        <p class="stock-line">Available stock: <strong id="availableStock">0</strong> pieces</p>
+                    </div>
+                    <button class="secondary-button" id="refreshDashboardButton" type="button">Refresh</button><button class="secondary-button" type="button" data-section="profile">View Profile</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-label">PAID ORDERS</div><div class="stat-number" id="totalOrders">0</div><div class="stat-description">Orders ready for supplier action</div></div>
+                    <div class="stat-card"><div class="stat-label">NEW ORDERS</div><div class="stat-number" id="newOrders">0</div><div class="stat-description">Waiting for dispatch</div></div>
+                    <div class="stat-card"><div class="stat-label">IN TRANSIT</div><div class="stat-number" id="inTransit">0</div><div class="stat-description">Orders moving to users</div></div>
+                    <div class="stat-card"><div class="stat-label">DELIVERED</div><div class="stat-number" id="delivered">0</div><div class="stat-description">Successfully delivered</div></div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="panel">
+                        <div class="panel-header"><div><h2>Recent Orders</h2><p>Paid orders assigned to you.</p></div><button class="text-button" data-section="orders" type="button">View all</button></div>
+                        <div id="recentOrders" class="mini-list"><div class="empty-state">Loading orders...</div></div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-header"><div><h2>Shipping Progress</h2><p>Current delivery pipeline.</p></div></div>
+                        <div class="progress-list">
+                            <div><span>Dispatched</span><strong id="dispatched">0</strong></div>
+                            <div><span>Out for Delivery</span><strong id="outForDelivery">0</strong></div>
+                            <div><span>Delivered</span><strong id="deliveredProgress">0</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ordersSection" class="content-section">
+                <div class="section-heading"><span>PROCUREMENT ORDERS</span><h1>Orders</h1><p>Paid orders assigned to this supplier.</p></div>
+                <div class="panel table-panel">
+                    <div class="panel-header"><div><h2>Supplier Orders</h2><p>Accept an order and move it through shipping stages.</p></div><button id="refreshOrdersButton" class="secondary-button" type="button">Refresh</button></div>
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>REQUEST</th><th>USER</th><th>PRODUCT</th><th>QTY</th><th>AMOUNT</th><th>PAYMENT</th><th>SHIPPING</th><th>ACTION</th></tr></thead>
+                            <tbody id="ordersTableBody"><tr><td colspan="8" class="empty-row">Loading orders...</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="shippingSection" class="content-section">
+                <div class="section-heading"><span>DELIVERY MANAGEMENT</span><h1>Shipping</h1><p>Update the shipping status and current location of each paid order.</p></div>
+                <div class="panel table-panel">
+                    <div class="panel-header"><div><h2>Shipment Tracking</h2><p>Only the correct next status can be selected.</p></div><button id="refreshShippingButton" class="secondary-button" type="button">Refresh</button></div>
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>REQUEST</th><th>PRODUCT</th><th>STATUS</th><th>LOCATION</th><th>TRACKING</th><th>LAST UPDATED</th><th>ACTION</th></tr></thead>
+                            <tbody id="shippingTableBody"><tr><td colspan="7" class="empty-row">Loading shipments...</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="inventorySection" class="content-section">
+                <div class="section-heading"><span>INVENTORY MANAGEMENT</span><h1>Inventory</h1><p>Update the number of pieces currently available for your assigned product.</p></div>
+                <div class="panel inventory-panel">
+                    <div class="panel-header"><div><h2 id="inventoryProductName">Assigned Product</h2><p>Users will see this quantity in the product catalog.</p></div></div>
+                    <div class="inventory-current">
+                        <span>Current available stock</span>
+                        <strong id="inventoryCurrentStock">0</strong>
+                        <small>pieces</small>
+                    </div>
+                    <div class="inventory-form">
+                        <label for="inventoryQuantity">New stock quantity</label>
+                        <input id="inventoryQuantity" type="number" min="0" step="1" placeholder="Enter number of pieces">
+                        <button id="saveInventoryButton" class="primary-button" type="button">Update Inventory</button>
+                    </div>
+                    <div id="inventoryMessage" class="inventory-message"></div>
+                </div>
+            </section>
+
+            <section id="ratingsSection" class="content-section">
+                <div class="section-heading"><span>PRODUCT RATINGS</span><h1>Customer Ratings</h1><p>Ratings and reviews submitted by users for your assigned product.</p></div>
+                <div class="panel table-panel">
+                    <div class="panel-header"><div><h2>Ratings &amp; Reviews</h2><p>Only ratings for your assigned product are shown here.</p></div><button id="refreshRatingsButton" class="secondary-button" type="button">Refresh</button></div>
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>PRODUCT</th><th>USER</th><th>RATING</th><th>REVIEW</th><th>DATE</th></tr></thead>
+                            <tbody id="ratingsTableBody"><tr><td colspan="5" class="empty-row">Loading ratings...</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="profileSection" class="content-section">
+                <div class="section-heading"><span>ACCOUNT</span><h1>Supplier Profile</h1><p>View your supplier account, contact details and assigned product information.</p></div>
+                <div class="profile-card">
+                    <div class="profile-avatar" id="profileAvatar">S</div>
+                    <div class="profile-main"><h2 id="profileName">Supplier</h2><span class="badge">SUPPLIER</span></div>
+                    <div class="profile-grid">
+                        <div><small>EMAIL</small><strong id="profileEmail">-</strong></div>
+                        <div><small>PHONE</small><strong id="profilePhone">-</strong></div>
+                        <div><small>ADDRESS</small><strong id="profileAddress">-</strong></div>
+                        <div><small>GST NUMBER</small><strong id="profileGst">-</strong></div>
+                        <div><small>STATUS</small><strong id="profileStatus">-</strong></div>
+                        <div><small>ASSIGNED PRODUCT</small><strong id="profileProduct">-</strong></div>
+                        <div><small>AVAILABLE STOCK</small><strong id="profileStock">0 pieces</strong></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+
+<div id="shippingModal" class="modal hidden">
+    <div class="modal-card">
+        <button id="closeModalButton" class="modal-close" type="button">×</button>
+        <span class="modal-kicker">SHIPMENT UPDATE</span>
+        <h2 id="modalTitle">Update Shipment</h2>
+        <p id="modalDescription">Move this order to the next shipping stage.</p>
+        <div class="form-group"><label for="shippingStatus">Next Status</label><select id="shippingStatus"></select></div>
+        <div class="form-group"><label for="shippingLocation">Current Location</label><input id="shippingLocation" type="text" placeholder="e.g. Hyderabad Warehouse" maxlength="120"></div>
+        <button id="saveShippingButton" class="primary-button" type="button">Save Shipping Update</button>
+    </div>
+</div>
+
+<script src="js/supplier-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,818 @@
+/* =========================================
+   NEW PROCUREMENT REQUEST
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f1f6fa,
+            #f8fafc
+        );
+
+    color: #183d59;
+
+    min-height: 100vh;
+}
+
+
+.request-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.request-header {
+
+    height: 76px;
+
+    background: white;
+
+    border-bottom:
+        1px solid #e4ebf1;
+
+    padding: 0 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.brand-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #145b8d,
+            #1976a8
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+
+    font-weight: 800;
+}
+
+
+.brand strong {
+
+    display: block;
+
+    color: #173f62;
+
+    font-size: 17px;
+}
+
+
+.brand span {
+
+    display: block;
+
+    color: #91a0ae;
+
+    font-size: 9px;
+
+    margin-top: 2px;
+}
+
+
+.back-button {
+
+    border: 1px solid #dbe4eb;
+
+    background: white;
+
+    color: #547087;
+
+    padding: 9px 15px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+
+.back-button:hover {
+
+    background: #f4f8fb;
+
+    border-color: #b9cbd8;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.request-main {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 45px 20px;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.page-heading {
+
+    text-align: center;
+
+    margin-bottom: 28px;
+}
+
+
+.page-heading span {
+
+    color: #2180ad;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+
+.page-heading h1 {
+
+    font-size: 31px;
+
+    color: #183d59;
+
+    margin-top: 7px;
+}
+
+
+.page-heading p {
+
+    color: #7c8d9c;
+
+    font-size: 12px;
+
+    margin-top: 7px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.request-card {
+
+    background: white;
+
+    border:
+        1px solid #e1e9ef;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 8px 30px
+        rgba(30,70,100,0.07);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   FORM HEADER
+========================================= */
+
+.form-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 23px 27px;
+
+    border-bottom:
+        1px solid #edf1f4;
+}
+
+
+.form-icon {
+
+    width: 43px;
+
+    height: 43px;
+
+    border-radius: 11px;
+
+    background: #e8f4fa;
+
+    color: #1976a8;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+.form-header h2 {
+
+    color: #294c66;
+
+    font-size: 16px;
+}
+
+
+.form-header p {
+
+    color: #98a6b1;
+
+    font-size: 10px;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message {
+
+    display: none;
+
+    margin: 20px 27px 0;
+
+    padding: 12px 14px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.message.success {
+
+    display: block;
+
+    background: #eaf8f1;
+
+    border: 1px solid #c7ead8;
+
+    color: #237752;
+}
+
+
+.message.error {
+
+    display: block;
+
+    background: #fff0ef;
+
+    border: 1px solid #ffd1cc;
+
+    color: #b83a30;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+form {
+
+    padding: 27px;
+}
+
+
+.form-group {
+
+    margin-bottom: 22px;
+}
+
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+}
+
+
+label {
+
+    display: block;
+
+    color: #3c596e;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+label span {
+
+    color: #dc5b51;
+}
+
+
+input,
+textarea,
+select {
+
+    width: 100%;
+
+    border: 1px solid #dbe4eb;
+
+    border-radius: 8px;
+
+    background: #fbfcfd;
+
+    color: #304f65;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+input, 
+select{
+
+    height: 43px;
+
+    padding: 0 13px;
+}
+
+
+textarea {
+
+    padding: 12px 13px;
+
+    resize: vertical;
+
+    min-height: 110px;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    border-color: #62a9cc;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(25,118,168,0.07);
+}
+
+
+input::placeholder,
+textarea::placeholder {
+
+    color: #a6b1ba;
+}
+
+
+small {
+
+    display: block;
+
+    color: #9aa7b2;
+
+    font-size: 9px;
+
+    margin-top: 6px;
+}
+
+
+/* =========================================
+   PRICE INPUT
+========================================= */
+
+.input-prefix {
+
+    position: relative;
+}
+
+
+.input-prefix > span {
+
+    position: absolute;
+
+    left: 13px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #7c93a4;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    z-index: 2;
+}
+
+
+.input-prefix input {
+
+    padding-left: 28px;
+}
+
+
+/* =========================================
+   TOTAL
+========================================= */
+
+.total-box {
+
+    background:
+        linear-gradient(
+            135deg,
+            #f1f8fc,
+            #f8fbfd
+        );
+
+    border:
+        1px solid #dcecf4;
+
+    border-radius: 10px;
+
+    padding: 16px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+
+.total-box span {
+
+    display: block;
+
+    color: #49677d;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.total-box small {
+
+    margin-top: 4px;
+}
+
+
+.total-box strong {
+
+    color: #176b99;
+
+    font-size: 22px;
+}
+
+
+/* =========================================
+   INFORMATION
+========================================= */
+
+.info-box {
+
+    display: flex;
+
+    gap: 11px;
+
+    padding: 14px;
+
+    background: #f8fafc;
+
+    border:
+        1px solid #e7edf2;
+
+    border-radius: 9px;
+
+    margin-bottom: 25px;
+}
+
+
+.info-icon {
+
+    width: 23px;
+
+    height: 23px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #e5f2f8;
+
+    color: #2179a5;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.info-box strong {
+
+    color: #526c7e;
+
+    font-size: 10px;
+}
+
+
+.info-box p {
+
+    color: #8a99a6;
+
+    font-size: 9px;
+
+    line-height: 1.6;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.form-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    border-top:
+        1px solid #edf1f4;
+
+    padding-top: 22px;
+}
+
+
+.cancel-button,
+.submit-button {
+
+    min-width: 120px;
+
+    height: 42px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.cancel-button {
+
+    background: white;
+
+    color: #62788a;
+
+    border:
+        1px solid #dbe4eb;
+}
+
+
+.cancel-button:hover {
+
+    background: #f5f8fa;
+}
+
+
+.submit-button {
+
+    border: none;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #145b8d,
+            #1976a8
+        );
+
+    box-shadow:
+        0 6px 15px
+        rgba(20,91,141,0.16);
+}
+
+
+.submit-button:hover {
+
+    transform: translateY(-1px);
+}
+
+
+.submit-button:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+.security-note {
+
+    text-align: center;
+
+    color: #98a6b1;
+
+    font-size: 9px;
+
+    margin-top: 18px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    text-align: center;
+
+    padding: 20px;
+
+    color: #9aa7b2;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 650px) {
+
+    .request-header {
+
+        padding: 0 18px;
+    }
+
+    .brand span {
+
+        display: none;
+    }
+
+    .back-button {
+
+        font-size: 10px;
+
+        padding: 8px 10px;
+    }
+
+    .request-main {
+
+        padding:
+            30px 14px;
+    }
+
+    .page-heading h1 {
+
+        font-size: 26px;
+    }
+
+    .form-row {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+    form {
+
+        padding: 20px;
+    }
+
+    .form-header {
+
+        padding: 20px;
+    }
+
+    .message {
+
+        margin-left: 20px;
+
+        margin-right: 20px;
+    }
+
+    .form-actions {
+
+        flex-direction: column-reverse;
+    }
+
+    .cancel-button,
+    .submit-button {
+
+        width: 100%;
+    }
+}
+.stock-message { margin-top: 8px; font-weight: 700; color: #176b99; }

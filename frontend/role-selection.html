@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Select Workspace | Procurement Management System</title>
+
+    <link rel="stylesheet"
+          href="css/role-selection.css">
+
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <!-- TOP BRAND -->
+
+        <header class="top-header">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    P
+                </div>
+
+                <div>
+
+                    <h2>ProcureFlow</h2>
+
+                    <span>
+                        Procurement Management System
+                    </span>
+
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button">
+
+                Logout
+
+            </button>
+
+        </header>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+
+            <div class="heading-section">
+
+                <div class="welcome-badge">
+                    ACCOUNT VERIFIED
+                </div>
+
+                <h1>
+                    Choose your workspace
+                </h1>
+
+                <p>
+                    Select the workspace associated with
+                    your account to continue.
+                </p>
+
+            </div>
+
+
+            <!-- USER INFORMATION -->
+
+            <div class="account-info">
+
+                <div class="account-avatar"
+                     id="accountAvatar">
+                    U
+                </div>
+
+                <div>
+
+                    <span class="account-label">
+                        Signed in as
+                    </span>
+
+                    <strong id="accountEmail">
+                        Loading...
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div id="message"
+                 class="message">
+            </div>
+
+
+            <!-- ROLE CARDS -->
+
+            <div class="role-grid">
+
+
+                <!-- USER -->
+
+                <button
+                    type="button"
+                    class="role-card"
+                    data-role="USER"
+                    id="userRoleCard">
+
+                    <div class="role-icon user-icon">
+                        U
+                    </div>
+
+                    <div class="role-content">
+
+                        <span class="role-label">
+                            WORKSPACE
+                        </span>
+
+                        <h2>
+                            User
+                        </h2>
+
+                        <p>
+                            Create procurement requests,
+                            track requests and manage your
+                            procurement activities.
+                        </p>
+
+                    </div>
+
+                    <div class="role-arrow">
+                        →
+                    </div>
+
+                    <div class="role-status"
+                         id="userStatus">
+                        Available
+                    </div>
+
+                </button>
+
+
+
+                <!-- ADMIN -->
+
+                <button
+                    type="button"
+                    class="role-card"
+                    data-role="ADMIN"
+                    id="adminRoleCard">
+
+                    <div class="role-icon admin-icon">
+                        A
+                    </div>
+
+                    <div class="role-content">
+
+                        <span class="role-label">
+                            MANAGEMENT
+                        </span>
+
+                        <h2>
+                            Admin
+                        </h2>
+
+                        <p>
+                            Manage users, requests,
+                            suppliers, products, payments
+                            and reports.
+                        </p>
+
+                    </div>
+
+                    <div class="role-arrow">
+                        →
+                    </div>
+
+                    <div class="role-status"
+                         id="adminStatus">
+                        Available
+                    </div>
+
+                </button>
+
+
+
+                <!-- SUPPLIER -->
+
+                <button
+                    type="button"
+                    class="role-card"
+                    data-role="SUPPLIER"
+                    id="supplierRoleCard">
+
+                    <div class="role-icon supplier-icon">
+                        S
+                    </div>
+
+                    <div class="role-content">
+
+                        <span class="role-label">
+                            PARTNER
+                        </span>
+
+                        <h2>
+                            Supplier
+                        </h2>
+
+                        <p>
+                            Manage orders, shipping,
+                            products, tracking and
+                            supplier activities.
+                        </p>
+
+                    </div>
+
+                    <div class="role-arrow">
+                        →
+                    </div>
+
+                    <div class="role-status"
+                         id="supplierStatus">
+                        Available
+                    </div>
+
+                </button>
+
+
+            </div>
+
+
+            <!-- SECURITY MESSAGE -->
+
+            <div class="security-message">
+
+                <span>🔒</span>
+
+                <p>
+                    Your workspace access is determined
+                    by the role assigned to your account.
+                </p>
+
+            </div>
+
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            © 2026 ProcureFlow · Procurement Management System
+
+        </footer>
+
+    </div>
+
+
+    <script src="js/role-selection.js"></script>
+
+</body>
+
+</html>

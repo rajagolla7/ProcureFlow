@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Payment | ProcureFlow</title>
+    <link rel="stylesheet" href="css/payment.css">
+</head>
+<body>
+
+<div class="payment-page">
+
+    <div class="payment-card">
+
+        <div class="top-bar">
+            <button type="button" id="backButton" class="back-button">← Back</button>
+            <span class="secure-badge">🔒 100% DEMO SECURE</span>
+        </div>
+
+        <div class="payment-header">
+            <div class="logo">P</div>
+            <div>
+                <h1>ProcureFlow</h1>
+                <p>Admin Supplier Payment</p>
+            </div>
+        </div>
+
+        <div class="step-line">
+            <span class="step active">1. Payment</span>
+            <span class="line"></span>
+            <span class="step" id="step2Label">2. Confirm</span>
+        </div>
+
+        <div class="order-summary">
+            <div>
+                <span class="small-label">REQUEST</span>
+                <strong id="requestId">-</strong>
+            </div>
+            <div>
+                <span class="small-label">PRODUCT</span>
+                <strong id="productName">-</strong>
+            </div>
+            <div>
+                <span class="small-label">QUANTITY</span>
+                <strong id="quantity">-</strong>
+            </div>
+            <div class="amount-box">
+                <span class="small-label">AMOUNT TO PAY</span>
+                <strong id="totalAmount">₹0.00</strong>
+            </div>
+        </div>
+
+        <div id="pageMessage" class="payment-message"></div>
+
+        <section id="methodSection">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Choose payment method</h2>
+                    <p>Admin is paying the supplier for this approved request.</p>
+                </div>
+            </div>
+
+            <div class="method-grid">
+
+                <button type="button" class="method-card selected" data-method="UPI">
+                    <span class="method-icon">₹</span>
+                    <span>
+                        <strong>UPI</strong>
+                        <small>Pay using UPI ID</small>
+                    </span>
+                    <span class="method-arrow">›</span>
+                </button>
+
+                <button type="button" class="method-card" data-method="CARD">
+                    <span class="method-icon">▣</span>
+                    <span>
+                        <strong>Credit / Debit Card</strong>
+                        <small>Use a demo card</small>
+                    </span>
+                    <span class="method-arrow">›</span>
+                </button>
+
+                <button type="button" class="method-card" data-method="UPI_QR">
+                    <span class="method-icon">▦</span>
+                    <span>
+                        <strong>Scan QR</strong>
+                        <small>Scan the supplier's demo QR</small>
+                    </span>
+                    <span class="method-arrow">›</span>
+                </button>
+
+            </div>
+
+            <div id="upiPanel" class="method-panel active">
+
+                <h3>Pay with UPI</h3>
+                <p class="panel-note">Enter a demo UPI ID and a demo UPI PIN. The PIN is verified for this demo only and is never saved.</p>
+
+                <label for="upiId">UPI ID</label>
+                <input id="upiId" type="text" placeholder="supplier@upi" autocomplete="off">
+
+                <label for="upiPin">UPI PIN</label>
+                <input id="upiPin" type="password" inputmode="numeric" maxlength="6" placeholder="Enter 4 or 6 digit demo PIN" autocomplete="off">
+
+                <div class="demo-hint">For presentation/demo: you can enter any 4 or 6 digit PIN.</div>
+
+                <button type="button" id="upiPayButton" class="primary-button">Proceed to Pay</button>
+            </div>
+
+            <div id="cardPanel" class="method-panel">
+
+                <h3>Credit / Debit Card</h3>
+                <p class="panel-note">Use dummy card details only. Do not enter a real card.</p>
+
+                <label for="cardHolder">Card Holder Name</label>
+                <input id="cardHolder" type="text" placeholder="Admin Demo">
+
+                <label for="cardNumber">Demo Card Number</label>
+                <input id="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="4111 1111 1111 1111" autocomplete="off">
+
+                <div class="two-column">
+                    <div>
+                        <label for="cardExpiry">Expiry</label>
+                        <input id="cardExpiry" type="text" maxlength="5" placeholder="12/30">
+                    </div>
+                    <div>
+                        <label for="cardCvv">CVV</label>
+                        <input id="cardCvv" type="password" inputmode="numeric" maxlength="3" placeholder="123" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="demo-hint">Card number and CVV are used only for demo validation. They are not stored.</div>
+
+                <button type="button" id="cardPayButton" class="primary-button">Proceed to Pay</button>
+            </div>
+
+            <div id="qrPanel" class="method-panel">
+
+                <h3>Scan QR to Pay</h3>
+                <p class="panel-note">This is a dummy supplier QR for your project presentation. No real money is transferred.</p>
+
+                <div class="qr-area">
+                    <div class="fake-qr" aria-label="Demo QR code">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <strong>Scan Demo QR</strong>
+                    <small>Supplier Payment • ProcureFlow</small>
+                </div>
+
+                <label class="check-row">
+                    <input id="qrScanned" type="checkbox">
+                    <span>I have scanned the demo QR code.</span>
+                </label>
+
+                <label for="qrAdminName">Admin Name</label>
+                <input id="qrAdminName" type="text" placeholder="Enter admin name">
+
+                <button type="button" id="qrPayButton" class="primary-button">Confirm QR Payment</button>
+            </div>
+
+        </section>
+
+        <section id="successSection" class="success-section">
+
+            <div class="success-icon">✓</div>
+            <h2>Payment Successful</h2>
+            <p>The supplier payment has been recorded successfully.</p>
+
+            <div class="success-details">
+                <div><span>Request</span><strong id="successRequest">-</strong></div>
+                <div><span>Amount</span><strong id="successAmount">₹0.00</strong></div>
+                <div><span>Method</span><strong id="successMethod">-</strong></div>
+                <div><span>Transaction</span><strong id="transactionReference">-</strong></div>
+            </div>
+
+            <button type="button" id="dashboardButton" class="primary-button">Back to Admin Dashboard</button>
+
+        </section>
+
+        <div class="footer-note">
+            <strong>Demo payment only.</strong> No real bank, card, UPI or PIN information is required.
+        </div>
+
+    </div>
+</div>
+
+<script src="js/payment.js"></script>
+</body>
+</html>
